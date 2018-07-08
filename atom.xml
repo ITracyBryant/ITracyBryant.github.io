@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Evolving</title>
+  
+  <subtitle>One man and a Crowd</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://itracybryant.github.io/"/>
+  <updated>2018-05-04T03:54:29.551Z</updated>
+  <id>https://itracybryant.github.io/</id>
+  
+  <author>
+    <name>ITracyBryant</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hibernate</title>
+    <link href="https://itracybryant.github.io/2018/05/04/Hibernate/"/>
+    <id>https://itracybryant.github.io/2018/05/04/Hibernate/</id>
+    <published>2018-05-04T03:27:16.000Z</published>
+    <updated>2018-05-04T03:54:29.551Z</updated>
+    
+    <summary type="html">
+    
+      Hibernate入门
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM</title>
+    <link href="https://itracybryant.github.io/2018/04/29/JVM/"/>
+    <id>https://itracybryant.github.io/2018/04/29/JVM/</id>
+    <published>2018-04-29T07:25:45.000Z</published>
+    <updated>2018-05-04T03:27:57.409Z</updated>
+    
+    <summary type="html">
+    
+      JVM简记
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet</title>
+    <link href="https://itracybryant.github.io/2018/04/05/Servlet/"/>
+    <id>https://itracybryant.github.io/2018/04/05/Servlet/</id>
+    <published>2018-04-05T01:46:09.000Z</published>
+    <updated>2018-04-05T02:04:07.614Z</updated>
+    
+    <summary type="html">
+    
+      Servlet简介
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven</title>
+    <link href="https://itracybryant.github.io/2018/04/02/Maven/"/>
+    <id>https://itracybryant.github.io/2018/04/02/Maven/</id>
+    <published>2018-04-02T08:44:23.000Z</published>
+    <updated>2018-04-02T12:55:08.284Z</updated>
+    
+    <summary type="html">
+    
+      Maven的简单使用
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Listener&amp;Filter</title>
+    <link href="https://itracybryant.github.io/2018/04/02/Listener-Filter/"/>
+    <id>https://itracybryant.github.io/2018/04/02/Listener-Filter/</id>
+    <published>2018-04-02T07:14:58.000Z</published>
+    <updated>2018-04-02T08:11:56.409Z</updated>
+    
+    <summary type="html">
+    
+      Servlet中过滤器&amp;监听器简介
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Reflect</title>
+    <link href="https://itracybryant.github.io/2018/04/01/Reflect/"/>
+    <id>https://itracybryant.github.io/2018/04/01/Reflect/</id>
+    <published>2018-04-01T08:16:27.000Z</published>
+    <updated>2018-04-02T09:47:06.380Z</updated>
+    
+    <summary type="html">
+    
+      Java的反射机制
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Annotation</title>
+    <link href="https://itracybryant.github.io/2018/04/01/Annotation/"/>
+    <id>https://itracybryant.github.io/2018/04/01/Annotation/</id>
+    <published>2018-04-01T06:54:41.000Z</published>
+    <updated>2018-04-02T07:15:41.424Z</updated>
+    
+    <summary type="html">
+    
+      解析Annotation
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaBean</title>
+    <link href="https://itracybryant.github.io/2018/03/30/JavaBean/"/>
+    <id>https://itracybryant.github.io/2018/03/30/JavaBean/</id>
+    <published>2018-03-30T04:45:19.000Z</published>
+    <updated>2018-03-30T06:07:16.721Z</updated>
+    
+    <summary type="html">
+    
+      JavaBean简介
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JSP指令与动作&amp;JSP中Cookie的使用</title>
+    <link href="https://itracybryant.github.io/2018/03/30/JSP%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%8A%A8%E4%BD%9C-JSP%E4%B8%ADCookie%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://itracybryant.github.io/2018/03/30/JSP指令与动作-JSP中Cookie的使用/</id>
+    <published>2018-03-30T03:24:13.000Z</published>
+    <updated>2018-03-30T03:54:36.265Z</updated>
+    
+    <summary type="html">
+    
+      JSP中指令&amp;动作  Session&amp;Cookie
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JSP基础知识</title>
+    <link href="https://itracybryant.github.io/2018/03/29/JSP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>https://itracybryant.github.io/2018/03/29/JSP基础知识/</id>
+    <published>2018-03-29T13:56:58.000Z</published>
+    <updated>2018-03-30T03:55:50.490Z</updated>
+    
+    <summary type="html">
+    
+      JSP九大内置对象
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>百度地图API移动覆盖物效果</title>
+    <link href="https://itracybryant.github.io/2018/03/17/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEAPI%E7%A7%BB%E5%8A%A8%E8%A6%86%E7%9B%96%E7%89%A9%E6%95%88%E6%9E%9C/"/>
+    <id>https://itracybryant.github.io/2018/03/17/百度地图API移动覆盖物效果/</id>
+    <published>2018-03-17T02:43:54.000Z</published>
+    <updated>2018-03-17T06:22:18.467Z</updated>
+    
+    <summary type="html">
+    
+      使用百度地图API实现地图上移动的点的动态效果踩的坑
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="JavaScript" scheme="https://itracybryant.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JDBC</title>
+    <link href="https://itracybryant.github.io/2018/03/08/JDBC/"/>
+    <id>https://itracybryant.github.io/2018/03/08/JDBC/</id>
+    <published>2018-03-08T14:04:21.000Z</published>
+    <updated>2018-03-08T14:13:29.556Z</updated>
+    
+    <summary type="html">
+    
+      JDBC编程简介
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaIO处理</title>
+    <link href="https://itracybryant.github.io/2018/03/04/JavaIO%E5%A4%84%E7%90%86/"/>
+    <id>https://itracybryant.github.io/2018/03/04/JavaIO处理/</id>
+    <published>2018-03-04T13:14:51.000Z</published>
+    <updated>2018-03-17T02:53:52.335Z</updated>
+    
+    <summary type="html">
+    
+      JavaIO操作常用类
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中解析XML文件</title>
+    <link href="https://itracybryant.github.io/2018/03/03/Java%E4%B8%AD%E8%A7%A3%E6%9E%90XML%E6%96%87%E4%BB%B6/"/>
+    <id>https://itracybryant.github.io/2018/03/03/Java中解析XML文件/</id>
+    <published>2018-03-03T13:28:46.000Z</published>
+    <updated>2018-04-02T08:43:07.976Z</updated>
+    
+    <summary type="html">
+    
+      Java中如何解析和写入XML文件
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaSocket通信实现</title>
+    <link href="https://itracybryant.github.io/2018/03/02/JavaSocket%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://itracybryant.github.io/2018/03/02/JavaSocket通信实现/</id>
+    <published>2018-03-02T11:57:51.000Z</published>
+    <updated>2018-03-30T04:02:43.811Z</updated>
+    
+    <summary type="html">
+    
+      在Java中用Socket实现通信的步骤
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python2.7中用spynner包动态抓取网页数据</title>
+    <link href="https://itracybryant.github.io/2017/11/25/spynner/"/>
+    <id>https://itracybryant.github.io/2017/11/25/spynner/</id>
+    <published>2017-11-25T13:45:00.000Z</published>
+    <updated>2018-05-04T04:00:33.417Z</updated>
+    
+    <summary type="html">
+    
+      spynner包的一个小的应用实例
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Python" scheme="https://itracybryant.github.io/tags/Python/"/>
+    
+  </entry>
+  
+</feed>
