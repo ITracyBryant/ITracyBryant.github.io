@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itracybryant.github.io/"/>
-  <updated>2018-05-04T03:54:29.551Z</updated>
+  <updated>2018-07-22T12:54:06.229Z</updated>
   <id>https://itracybryant.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式</title>
+    <link href="https://itracybryant.github.io/2018/07/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://itracybryant.github.io/2018/07/22/设计模式/</id>
+    <published>2018-07-22T12:37:37.000Z</published>
+    <updated>2018-07-22T12:54:06.229Z</updated>
+    
+    <summary type="html">
+    
+      几种常见设计模式的小结
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Hibernate</title>
