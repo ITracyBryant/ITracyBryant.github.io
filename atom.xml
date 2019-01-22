@@ -241,11 +241,11 @@
     <link href="https://itracybryant.github.io/2018/03/17/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEAPI%E7%A7%BB%E5%8A%A8%E8%A6%86%E7%9B%96%E7%89%A9%E6%95%88%E6%9E%9C/"/>
     <id>https://itracybryant.github.io/2018/03/17/百度地图API移动覆盖物效果/</id>
     <published>2018-03-17T02:43:54.000Z</published>
-    <updated>2018-03-17T06:22:18.467Z</updated>
+    <updated>2019-01-22T14:41:44.559Z</updated>
     
     <summary type="html">
     
-      使用百度地图API实现地图上移动的点的动态效果踩的坑
+      使用百度地图API实现地图上移动的点踩的坑
     
     </summary>
     
@@ -261,11 +261,11 @@
     <link href="https://itracybryant.github.io/2018/03/08/JDBC/"/>
     <id>https://itracybryant.github.io/2018/03/08/JDBC/</id>
     <published>2018-03-08T14:04:21.000Z</published>
-    <updated>2018-03-08T14:13:29.556Z</updated>
+    <updated>2019-01-22T14:35:04.238Z</updated>
     
     <summary type="html">
     
-      JDBC编程简介
+      JDBC 编程简介
     
     </summary>
     
@@ -277,15 +277,15 @@
   </entry>
   
   <entry>
-    <title>JavaIO处理</title>
+    <title>Java IO 处理</title>
     <link href="https://itracybryant.github.io/2018/03/04/JavaIO%E5%A4%84%E7%90%86/"/>
     <id>https://itracybryant.github.io/2018/03/04/JavaIO处理/</id>
     <published>2018-03-04T13:14:51.000Z</published>
-    <updated>2018-03-17T02:53:52.335Z</updated>
+    <updated>2019-01-22T14:27:09.735Z</updated>
     
     <summary type="html">
     
-      JavaIO操作常用类
+      Java IO 操作常用类
     
     </summary>
     
@@ -301,7 +301,7 @@
     <link href="https://itracybryant.github.io/2018/03/03/Java%E4%B8%AD%E8%A7%A3%E6%9E%90XML%E6%96%87%E4%BB%B6/"/>
     <id>https://itracybryant.github.io/2018/03/03/Java中解析XML文件/</id>
     <published>2018-03-03T13:28:46.000Z</published>
-    <updated>2018-04-02T08:43:07.976Z</updated>
+    <updated>2019-01-22T13:48:47.159Z</updated>
     
     <summary type="html">
     
@@ -321,7 +321,7 @@
     <link href="https://itracybryant.github.io/2018/03/02/JavaSocket%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0/"/>
     <id>https://itracybryant.github.io/2018/03/02/JavaSocket通信实现/</id>
     <published>2018-03-02T11:57:51.000Z</published>
-    <updated>2018-03-30T04:02:43.811Z</updated>
+    <updated>2019-01-22T13:50:33.179Z</updated>
     
     <summary type="html">
     
@@ -333,26 +333,6 @@
     
     
       <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python2.7中用spynner包动态抓取网页数据</title>
-    <link href="https://itracybryant.github.io/2017/11/25/spynner/"/>
-    <id>https://itracybryant.github.io/2017/11/25/spynner/</id>
-    <published>2017-11-25T13:45:00.000Z</published>
-    <updated>2018-05-04T04:00:33.417Z</updated>
-    
-    <summary type="html">
-    
-      spynner包的一个小的应用实例
-    
-    </summary>
-    
-      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
-    
-    
-      <category term="Python" scheme="https://itracybryant.github.io/tags/Python/"/>
     
   </entry>
   
