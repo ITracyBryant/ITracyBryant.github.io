@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itracybryant.github.io/"/>
-  <updated>2018-07-22T12:54:06.229Z</updated>
+  <updated>2019-01-23T08:15:37.167Z</updated>
   <id>https://itracybryant.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://itracybryant.github.io/2018/07/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     <id>https://itracybryant.github.io/2018/07/22/设计模式/</id>
     <published>2018-07-22T12:37:37.000Z</published>
-    <updated>2018-07-22T12:54:06.229Z</updated>
+    <updated>2019-01-23T08:15:37.167Z</updated>
     
     <summary type="html">
     
@@ -41,7 +41,7 @@
     <link href="https://itracybryant.github.io/2018/05/04/Hibernate/"/>
     <id>https://itracybryant.github.io/2018/05/04/Hibernate/</id>
     <published>2018-05-04T03:27:16.000Z</published>
-    <updated>2018-05-04T03:54:29.551Z</updated>
+    <updated>2019-01-23T07:45:43.825Z</updated>
     
     <summary type="html">
     
@@ -61,7 +61,7 @@
     <link href="https://itracybryant.github.io/2018/04/29/JVM/"/>
     <id>https://itracybryant.github.io/2018/04/29/JVM/</id>
     <published>2018-04-29T07:25:45.000Z</published>
-    <updated>2018-05-04T03:27:57.409Z</updated>
+    <updated>2019-01-23T07:20:43.602Z</updated>
     
     <summary type="html">
     
@@ -77,35 +77,15 @@
   </entry>
   
   <entry>
-    <title>Servlet</title>
-    <link href="https://itracybryant.github.io/2018/04/05/Servlet/"/>
-    <id>https://itracybryant.github.io/2018/04/05/Servlet/</id>
-    <published>2018-04-05T01:46:09.000Z</published>
-    <updated>2018-04-05T02:04:07.614Z</updated>
-    
-    <summary type="html">
-    
-      Servlet简介
-    
-    </summary>
-    
-      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
-    
-    
-      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Maven</title>
     <link href="https://itracybryant.github.io/2018/04/02/Maven/"/>
     <id>https://itracybryant.github.io/2018/04/02/Maven/</id>
     <published>2018-04-02T08:44:23.000Z</published>
-    <updated>2018-04-02T12:55:08.284Z</updated>
+    <updated>2019-01-23T06:44:29.738Z</updated>
     
     <summary type="html">
     
-      Maven的简单使用
+      Maven的快速上手
     
     </summary>
     
@@ -117,15 +97,15 @@
   </entry>
   
   <entry>
-    <title>Listener&amp;Filter</title>
+    <title>Listener &amp; Filter</title>
     <link href="https://itracybryant.github.io/2018/04/02/Listener-Filter/"/>
     <id>https://itracybryant.github.io/2018/04/02/Listener-Filter/</id>
     <published>2018-04-02T07:14:58.000Z</published>
-    <updated>2018-04-02T08:11:56.409Z</updated>
+    <updated>2019-01-23T06:25:43.346Z</updated>
     
     <summary type="html">
     
-      Servlet中过滤器&amp;监听器简介
+      Servlet中过滤器 &amp; 监听器简介
     
     </summary>
     
@@ -141,11 +121,11 @@
     <link href="https://itracybryant.github.io/2018/04/01/Reflect/"/>
     <id>https://itracybryant.github.io/2018/04/01/Reflect/</id>
     <published>2018-04-01T08:16:27.000Z</published>
-    <updated>2018-04-02T09:47:06.380Z</updated>
+    <updated>2019-01-23T05:47:38.526Z</updated>
     
     <summary type="html">
     
-      Java的反射机制
+      Java的反射机制(框架底层原理基于的特性)
     
     </summary>
     
@@ -161,11 +141,31 @@
     <link href="https://itracybryant.github.io/2018/04/01/Annotation/"/>
     <id>https://itracybryant.github.io/2018/04/01/Annotation/</id>
     <published>2018-04-01T06:54:41.000Z</published>
-    <updated>2018-04-02T07:15:41.424Z</updated>
+    <updated>2019-01-23T05:33:53.483Z</updated>
     
     <summary type="html">
     
-      解析Annotation
+      解析 Annotation
+    
+    </summary>
+    
+      <category term="note" scheme="https://itracybryant.github.io/categories/note/"/>
+    
+    
+      <category term="Java" scheme="https://itracybryant.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet</title>
+    <link href="https://itracybryant.github.io/2018/04/01/Servlet/"/>
+    <id>https://itracybryant.github.io/2018/04/01/Servlet/</id>
+    <published>2018-04-01T01:46:09.000Z</published>
+    <updated>2019-01-23T06:58:15.030Z</updated>
+    
+    <summary type="html">
+    
+      Servlet小结
     
     </summary>
     
@@ -181,11 +181,11 @@
     <link href="https://itracybryant.github.io/2018/03/30/JavaBean/"/>
     <id>https://itracybryant.github.io/2018/03/30/JavaBean/</id>
     <published>2018-03-30T04:45:19.000Z</published>
-    <updated>2018-03-30T06:07:16.721Z</updated>
+    <updated>2019-01-23T05:04:42.808Z</updated>
     
     <summary type="html">
     
-      JavaBean简介
+      JavaBean 简介
     
     </summary>
     
@@ -197,15 +197,15 @@
   </entry>
   
   <entry>
-    <title>JSP指令与动作&amp;JSP中Cookie的使用</title>
+    <title>JSP指令与动作 &amp; JSP中Cookie的使用</title>
     <link href="https://itracybryant.github.io/2018/03/30/JSP%E6%8C%87%E4%BB%A4%E4%B8%8E%E5%8A%A8%E4%BD%9C-JSP%E4%B8%ADCookie%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://itracybryant.github.io/2018/03/30/JSP指令与动作-JSP中Cookie的使用/</id>
     <published>2018-03-30T03:24:13.000Z</published>
-    <updated>2018-03-30T03:54:36.265Z</updated>
+    <updated>2019-01-23T05:21:30.289Z</updated>
     
     <summary type="html">
     
-      JSP中指令&amp;动作  Session&amp;Cookie
+      JSP指令 &amp; 动作——Session &amp; Cookie
     
     </summary>
     
@@ -217,15 +217,15 @@
   </entry>
   
   <entry>
-    <title>JSP基础知识</title>
+    <title>JSP 基础</title>
     <link href="https://itracybryant.github.io/2018/03/29/JSP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <id>https://itracybryant.github.io/2018/03/29/JSP基础知识/</id>
     <published>2018-03-29T13:56:58.000Z</published>
-    <updated>2018-03-30T03:55:50.490Z</updated>
+    <updated>2019-01-23T04:53:43.837Z</updated>
     
     <summary type="html">
     
-      JSP九大内置对象
+      JSP的一些知识点，记录一下
     
     </summary>
     

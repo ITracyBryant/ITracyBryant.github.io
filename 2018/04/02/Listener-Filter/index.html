@@ -1,27 +1,168 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="With the eyes of programmer to more understanding of the world——ITracyBryant's blog"><title>Listener&amp;Filter | Evolving</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Listener&amp;Filter</h1><a id="logo" href="/.">Evolving</a><p class="description">One man and a Crowd</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Listener&amp;Filter</h1><div class="post-meta">Apr 2, 2018<span> | </span><span class="category"><a href="/categories/note/">note</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><p><strong>Filter</strong><br>Web过滤器：过滤用户请求，不可以直接处理请求。(辅助功能)</p>
-<p>定义：过滤器是一个服务器端组件，它可以截取用户端的请求与响应信息，并对这些信息过滤；过滤器能够改变用户请求的web资源，即能改变用户的请求路径，但不能直接返回数据</p>
-<p>工作原理：<br>1.没有过滤器，用户直接访问web资源；<br>2.在web容器启动的时候，已经加载了过滤器；<br>3.用户发送请求，到达过滤器；过滤器判断请求是否合法，合法则将用户请求发送至web资源；web资源响应返回至过滤器；过滤器将web资源的响应发送给用户。</p>
-<p>生命周期：<br>1.实例化(通过web.xml去配置)：在web容器启动时，只会实例化过滤器一次。<br>2.初始化(init())：初始化只执行一次，该方法可以读取web.xml文件中过滤器的参数。<br>3.过滤(doFilter())：针对每一次请求都会执行，完成实际的过滤操作，是过滤器核心方法。<br>4.销毁(destroy())，在web容器关闭时销毁；在销毁过滤器实例前调用，可以释放过滤器占用的资源(大多数情况用不到)<br><strong>Note</strong>：当用户请求访问与过滤器关联的URL时，Web容器将先调用过滤器的doFilter()，FilterChain参数可以调用chain.doFilter()，将请求传递给下一个过滤器(或目标资源)，或利用转发，重定向将请求转发到其他资源。</p>
-<p>过滤器的web.xml配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Filter的名字<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>过滤器类完整的名字<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Filter的名字<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>URL(当用户请求的URL和指定的URL匹配时将触发过滤器工作)<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>(可以是多对值,默认(类型)值为REQUEST)(Servlet2.5中)request/include/forward/error<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>多个过滤器：若相同，则生成过滤器链(按web.xml中过滤器定义的先后顺序生成)，依次执行chain.doFilter() (逆序依次返回响应)</p>
-<p>过滤器类型：<br>(Servlet2.5)<br>request：用户直接访问页面时，web容器将会调用过滤器<br>forward：目标资源通过RequestDispatcher的forward()访问时，该过滤器被调用<br>include：目标资源通过RequestDispatcher的include()访问时，该过滤器被调用<br>error：目标资源是通过声明式异常处理机制调用时，过滤器将被调用<br>(Servlet3.0)<br>async：支持异步处理</p>
-<p>@WebFilter：用于将一个类声明为过滤器，该注解将会在部署时被容器处理，容器将根据具体的属性配置将相应的类部署为过滤器<br>常用属性：filterName，value，urlPatterns(value，urlPatterns 不能同时使用)，servletNames，dispatcherTypes，initParams，asynSupported，description，displayName</p>
-<p>实际场景中的应用：<br>1.对用户请求进行统一认证<br>2.编码转换<br>3.对用户发送的数据进行过滤替换<br>4.转换图像格式<br>5.对响应的内容进行压缩</p>
-<p><strong>Listener</strong><br>监听器定义：指专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监听的对象发生变化时，立刻采取行动。</p>
-<p>web应用服务器(监听者) –&gt; 监听器(Listener) –&gt; session(被监听者) &lt;–用户访问</p>
-<p>Servlet规范：web监听器 –&gt; 监听(客户端请求和服务端操作)有ServletContext(application),HttpSession(session),ServletRequest(request)对象(监听上述三个对象的创建，销毁，属性的变化)</p>
-<p>Web监听器：<br>1.Servlet规范中定义的一种特殊类<br>2.用于监听ServletContext,HttpSession,ServletRequest等域对象的创建和销毁事件<br>3.用于监听域对象的属性发生修改的事件<br>4.可以在事件发生前，后做一些必要处理</p>
-<p><strong>Note</strong>：监听器的启动顺序按照我们的注册顺序来加载启动；<br><strong>加载顺序优先级</strong>：listener&gt;filter&gt;servlet</p>
-<p>应用：统计在线人数和在线用户；系统启动时加载初始化信息；统计网站访问量；与Spring结合</p>
-<p>步骤：创建一个实现监听器接口的类 –&gt; 配置web.xml进行注册</p>
-<p><strong>监听器的分类</strong>：<br>1.按监听的对象划分:<br>(1)用于监听应用程序环境对象(ServletContext)的事件监听器；<br>(2)用于监听用户会话对象(HttpSession)的事件监听器；<br>(3)用于监听请求消息对象(ServletRequest)的事件监听器</p>
-<p>2.按监听的事件划分：<br>(1)监听域对象自身的创建和销毁的事件监听器：</p>
-<p><1>ServletContextListener(接口)(n个)-&gt;ServletContext(1个)：实现ServletContextListener接口的对象有contextInitialized()和contextDestroyed(),两个方法都会传入ServletContextEvent事件对象(可以获取ServletContext对象和初始化参数)。<br>主要用途：定时器，全局属性对象，全局数据库连接，加载缓存信息。</1></p>
-<p><2>HttpSessionListener(接口)(n个)-&gt;HttpSession(1个)：实现HttpSessionListener接口的对象有两个事件处理方法sessionCreated()和sessionDestroyed()<br>主要用途：统计在线人数，记录访问日志</2></p>
-<p><3>ServletRequestListener(接口)(n个)-&gt;ServletRequest(1个)：实现ServletRequestListener接口的对象有两个事件处理方法requestInitialized()和requestDestroyed()<br>主要用途：读取request里参数，记录访问历史。</3></p>
-<p>(2)监听域对象中的属性的增加和删除的事件监听器：<br>ServletContextAttributeListener(接口)<br>HttpSessionAttributeListener(接口)<br>ServletRequestAttributeListener(接口)<br>上述三个接口都有attributeAdded()，attributeRemoved()，attributeReplaced()三个事件处理方法</p>
-<p>(3)监听绑定到HttpSession域中的某个对象的状态的事件监听器：<br>HttpSession中的对象状态：绑定(session.setAttribute)–》解除绑定(session.removeAttribute)；钝化(session对象持久化到存储设备上)–》活化(session对象从存储设备上恢复)。<br>session钝化机制：session正常情况下存储在服务器内存中，把服务器中不经常使用的session对象序列化到系统文件系统或数据库系统中，当被使用时则反序列化到内存中，整个过程由服务器自动完成。<br>Tomcat中有两种Session钝化管理器(Session钝化机制由SessionManager管理)：<br>    <1>org.apache.catalina.session.StandardManager：<br>    当Tomcat服务器被关闭或重启时，Tomcat服务器会将当前内存中的Session对象钝化到服务器文件系统中；<br>    另一种情况是Web应用程序被重新加载时，内存中的Session对象也会被钝化到服务器的文件系统中。<br>    (钝化后的文件被保存到Tomcat安装路径/work/Catalina/hostname/applicationname/SESSION.ser)<br>    <2>org.apache.catalina.session.PersistentManager：<br>    首先在钝化的基础上进行了扩张，前两种情况和StandardManager相同；<br>    第三种情况，可以配置主流内存的Session对象数目，将不常使用的Session对象保存到文件系统或数据库，当需要使用时再重新加载。<br><strong>默认情况下，Tomcat提供两个钝化驱动类：org.apache.catalina.FileStore和org.apache.catalina.JDBCStore</strong></2></1></p>
-<p>Servlet规范：<br>HttpSessionBindingListener 绑定:valueBound方法    解除绑定:valueUnbound方法<br>HttpSessionActivationListener 钝化:sessionWillPassivate()    活化:sessionDidActivate()<br><strong>这两个监听器不需要在web.xml中注册配置</strong></p>
-<p>使用Servlet3.0的前提条件：<br>1.使用Servlet3.0新标准jar包<br>2.jdk版本1.6以上<br>3.编译器编译级别6.0<br>4.在web.xml中使用3.0规范<br>5.使用支持Servlet3.0特性的web容器，e.g:tomcat7以上</p>
-<p>Servlet3.0下监听器用法：@WebListener<br>该注解用于将类声明为监听器，被@WebListener标注的类必须实现以下至少一个接口：ServletContextListener;ServletContextAttributeListener;HttpSessionListener;HttpSessionAttributeListener;ServletRequestListener;ServletRequestAttributeListener<br><strong>无法定义监听器的顺序；只有一个属性value(该监听器的描述信息)。</strong></p>
-</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://itracybryant.github.io/2018/04/02/Listener-Filter/" data-id="cjr7vn742000tik5dmv8moh6a" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3ayY4iMRAFQP7/pxmpTy0xU7yXrm4NdviEoLaoQ5KLH494Pb/W98+v6/XXR7lWzsXAwNib8bxcr4wcmTzi9TfJs2FgYJzDuCvIXr+Ca3D++jAwMDDa218f3wIwMDAw7gq4SXqXhN3klWFgYGDkRez14+ZNt1n6eFstjoGB8YGM2WDgdz7/+HwDAwPjv2c8yzU7Nx9VPkcLAwNjb0ZSUt4V2WaNvGKYioGBsSkjLxfzYcC9jChZxMDAOIAxPHnUbsuL1SKtxMDA2JqRl5R5cJxFwvbIv1AxMDCOYQw3Olwml/mv7fgTAwPjNEae8M02arSbJ/KrYWBg7M3Iy9ckgObntsXwmyMxMDAOYKyXsnm7Pw+sRTsPAwNja8ZKs34WpleOxMDAOJPRtr1Wxpwro4ViEouBgbE1o90Elgfo9sr1MRgYGAcw2nB5b1nbXvlNuw0DA2M7Rp7erY8H1gFvEkcMDIxjGPnGiHybRZ7kJfh/HomBgbEpI79x3oBrv0/Glm/uiIGBcQCjDXBtepc33eoNFhgYGAcw2jDajh6LZllZQhf/HhgYGB/OWClNf25LWTvsxMDA2JvRBrs2IOahebaNDAMD4xxGG2RX0sTkysP0EQMD4wBGviFsNuzM2bPQjIGBgdGOAWZRsQ3Kw4CLgYFxDGM2dIweKA79NwRcDAyMj2LkKd2sldZutqgHqBgYGFsz1ntZ+QByZWB5AwYDA+PzGH8Afi4PLKokKkUAAAAASUVORK5CYII=" class="article-share-link">分享</a><div class="tags"><a href="/tags/Java/">Java</a></div><div class="post-nav"><a href="/2018/04/02/Maven/" class="pre">Maven</a><a href="/2018/04/01/Reflect/" class="next">Reflect</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://itracybryant.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">16</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/Hibernate/">Hibernate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/29/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/Servlet/">Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/Maven/">Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/Listener-Filter/">Listener&Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/Reflect/">Reflect</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/Annotation/">Annotation</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/JavaBean/">JavaBean</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/JSP指令与动作-JSP中Cookie的使用/">JSP指令与动作&JSP中Cookie的使用</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://www.haomwei.com/" title="屠城" target="_blank">屠城</a><ul></ul><a href="https://luuman.github.io/Home/H1/index.html" title="世平阜康" target="_blank">世平阜康</a><ul></ul><a href="https://diygod.me/" title="DIYgod" target="_blank">DIYgod</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Evolving.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="With the eyes of programmer to more understanding of the world——ITracyBryant's blog"><title>Listener &amp; Filter | Evolving</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Listener &amp; Filter</h1><a id="logo" href="/.">Evolving</a><p class="description">One man and a Crowd</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Listener &amp; Filter</h1><div class="post-meta">Apr 2, 2018<span> | </span><span class="category"><a href="/categories/note/">note</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a href="/2018/04/02/Listener-Filter/#vcomment" class="disqus-comment-count"><span data-xid="/2018/04/02/Listener-Filter/" class="valine-comment-count"></span><span>条评论</span></a><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Filter"><span class="toc-number">1.</span> <span class="toc-text">1. Filter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-生命周期"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-过滤器的web-xml配置"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 过滤器的web.xml配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Listener"><span class="toc-number">2.</span> <span class="toc-text">2. Listener</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-监听器定义"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 监听器定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-监听器的分类"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 监听器的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-按监听的对象划分"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 按监听的对象划分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-按监听的事件划分"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 按监听的事件划分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Servlet规范"><span class="toc-number">3.</span> <span class="toc-text">3. Servlet规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-使用Servlet3-0的前提条件"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 使用Servlet3.0的前提条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Servlet3-0下监听器用法"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Servlet3.0下监听器用法</span></a></li></ol></li></ol></div></div><div class="post-content"><h2 id="1-Filter"><a href="#1-Filter" class="headerlink" title="1. Filter"></a>1. Filter</h2><ul>
+<li>Web过滤器：过滤用户请求，不可以直接处理请求(辅助功能)。</li>
+<li>定义：过滤器是一个服务器端组件，它可以截取用户端的请求与响应信息，并对这些信息过滤；过滤器能够改变用户请求的web资源，即能改变用户的请求路径，但不能直接返回数据。</li>
+<li>工作原理：<ul>
+<li>没有过滤器，用户直接访问web资源；</li>
+<li>在web容器启动的时候，已经加载了过滤器；</li>
+<li>用户发送请求，到达过滤器；过滤器判断请求是否合法，合法则将用户请求发送至web资源；web资源响应返回至过滤器；过滤器将web资源的响应发送给用户。</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-生命周期"><a href="#1-1-生命周期" class="headerlink" title="1.1 生命周期"></a>1.1 生命周期</h3><ul>
+<li>实例化(通过web.xml去配置)：在web容器启动时，只会实例化过滤器一次。</li>
+<li>初始化(init())：初始化只执行一次，该方法可以读取web.xml文件中过滤器的参数。</li>
+<li>过滤(doFilter())：针对每一次请求都会执行，完成实际的过滤操作，是过滤器核心方法。</li>
+<li><p>销毁(destroy())：在web容器关闭时销毁；在销毁过滤器实例前调用，可以释放过滤器占用的资源(大多数情况用不到)。</p>
+<p><strong>Note：</strong> <em>当用户请求访问与过滤器关联的URL时，Web容器将先调用过滤器的doFilter()，FilterChain参数可以调用chain.doFilter()，将请求传递给下一个过滤器(或目标资源)，或利用转发，重定向将请求转发到其他资源。</em></p>
+</li>
+</ul>
+<h3 id="1-2-过滤器的web-xml配置"><a href="#1-2-过滤器的web-xml配置" class="headerlink" title="1.2 过滤器的web.xml配置"></a>1.2 过滤器的web.xml配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Filter的名字<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>过滤器类完整的名字<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Filter的名字<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>URL(当用户请求的URL和指定的URL匹配时将触发过滤器工作)<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>(可以是多对值,默认(类型)值为REQUEST)(Servlet2.5中)request/include/forward/error<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>多个过滤器：若相同，则生成过滤器链(按web.xml中过滤器定义的先后顺序生成)，依次执行chain.doFilter() (逆序依次返回响应)</em></p>
+<ul>
+<li>过滤器类型：<ul>
+<li>(Servlet2.5)<ul>
+<li>request：用户直接访问页面时，web容器将会调用过滤器</li>
+<li>forward：目标资源通过RequestDispatcher的forward()访问时，该过滤器被调用</li>
+<li>include：目标资源通过RequestDispatcher的include()访问时，该过滤器被调用</li>
+<li>error：目标资源是通过声明式异常处理机制调用时，过滤器将被调用</li>
+</ul>
+</li>
+<li>(Servlet3.0)<ul>
+<li>async：支持异步处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>@WebFilter：用于将一个类声明为过滤器，该注解将会在部署时被容器处理，容器将根据具体的属性配置将相应的类部署为过滤器<ul>
+<li>常用属性：<ul>
+<li>filterName</li>
+<li>value</li>
+<li>urlPatterns(value，urlPatterns 不能同时使用)</li>
+<li>servletNames</li>
+<li>dispatcherTypes</li>
+<li>initParams</li>
+<li>asynSupported</li>
+<li>description</li>
+<li>displayName</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实际场景中的应用：<ul>
+<li>对用户请求进行统一认证</li>
+<li>编码转换</li>
+<li>对用户发送的数据进行过滤替换</li>
+<li>转换图像格式</li>
+<li>对响应的内容进行压缩</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Listener"><a href="#2-Listener" class="headerlink" title="2. Listener"></a>2. Listener</h2><h3 id="2-1-监听器定义"><a href="#2-1-监听器定义" class="headerlink" title="2.1 监听器定义"></a>2.1 监听器定义</h3><p><em>指专门用于对其他对象身上发生的事件或状态改变进行监听和相应处理的对象，当被监听的对象发生变化时，立刻采取行动。</em></p>
+<ul>
+<li>执行顺序：web应用服务器(监听者) –&gt; 监听器(Listener) –&gt; session(被监听者) &lt;–用户访问</li>
+<li>Servlet规范：web监听器 –&gt; 监听(客户端请求和服务端操作)有ServletContext(application),HttpSession(session),ServletRequest(request)对象(监听上述三个对象的创建，销毁，属性的变化)</li>
+<li>Web监听器：<ul>
+<li>Servlet规范中定义的一种特殊类</li>
+<li>用于监听ServletContext,HttpSession,ServletRequest等域对象的创建和销毁事件</li>
+<li>用于监听域对象的属性发生修改的事件</li>
+<li>可以在事件发生前，后做一些必要处理</li>
+</ul>
+</li>
+<li>Note：监听器的启动顺序按照我们的注册顺序来加载启动</li>
+<li>加载顺序优先级：listener -&gt; filter -&gt; servlet</li>
+<li>应用：统计在线人数和在线用户；系统启动时加载初始化信息；统计网站访问量；与Spring结合</li>
+<li>步骤：创建一个实现监听器接口的类 –&gt; 配置web.xml进行注册</li>
+</ul>
+<h3 id="2-2-监听器的分类"><a href="#2-2-监听器的分类" class="headerlink" title="2.2 监听器的分类"></a>2.2 监听器的分类</h3><h4 id="2-2-1-按监听的对象划分"><a href="#2-2-1-按监听的对象划分" class="headerlink" title="2.2.1 按监听的对象划分"></a>2.2.1 按监听的对象划分</h4><ul>
+<li>用于监听应用程序环境对象(ServletContext)的事件监听器</li>
+<li>用于监听用户会话对象(HttpSession)的事件监听器</li>
+<li>用于监听请求消息对象(ServletRequest)的事件监听器</li>
+</ul>
+<h4 id="2-2-2-按监听的事件划分"><a href="#2-2-2-按监听的事件划分" class="headerlink" title="2.2.2 按监听的事件划分"></a>2.2.2 按监听的事件划分</h4><ul>
+<li><p>监听域对象自身的创建和销毁的事件监听器：</p>
+<ul>
+<li>ServletContextListener(接口)(n个)-&gt;ServletContext(1个)：实现ServletContextListener接口的对象有contextInitialized()和contextDestroyed(),两个方法都会传入ServletContextEvent事件对象(可以获取ServletContext对象和初始化参数)。<ul>
+<li>主要用途：定时器，全局属性对象，全局数据库连接，加载缓存信息。</li>
+</ul>
+</li>
+<li>HttpSessionListener(接口)(n个)-&gt;HttpSession(1个)：实现HttpSessionListener接口的对象有两个事件处理方法sessionCreated()和sessionDestroyed()<ul>
+<li>主要用途：统计在线人数，记录访问日志</li>
+</ul>
+</li>
+<li>ServletRequestListener(接口)(n个)-&gt;ServletRequest(1个)：实现ServletRequestListener接口的对象有两个事件处理方法requestInitialized()和requestDestroyed()<ul>
+<li>主要用途：读取request里参数，记录访问历史。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>监听域对象中的属性的增加和删除的事件监听器：</p>
+<ul>
+<li>ServletContextAttributeListener(接口)</li>
+<li>HttpSessionAttributeListener(接口)</li>
+<li>ServletRequestAttributeListener(接口)<br><strong>上述三个接口都有attributeAdded()，attributeRemoved()，attributeReplaced()三个事件处理方法</strong></li>
+</ul>
+</li>
+<li><p>监听绑定到HttpSession域中的某个对象的状态的事件监听器：</p>
+<ul>
+<li>HttpSession中的对象状态：绑定(session.setAttribute)–》解除绑定(session.removeAttribute)；钝化(session对象持久化到存储设备上)–》活化(session对象从存储设备上恢复)。</li>
+<li>session钝化机制：session正常情况下存储在服务器内存中，把服务器中不经常使用的session对象序列化到系统文件系统或数据库系统中，当被使用时则反序列化到内存中，整个过程由服务器自动完成。</li>
+<li>Tomcat中有两种Session钝化管理器(Session钝化机制由SessionManager管理)：<ul>
+<li>org.apache.catalina.session.StandardManager：当Tomcat服务器被关闭或重启时，Tomcat服务器会将当前内存中的Session对象钝化到服务器文件系统中；另一种情况是Web应用程序被重新加载时，内存中的Session对象也会被钝化到服务器的文件系统中。(钝化后的文件被保存到Tomcat安装路径/work/Catalina/hostname/applicationname/SESSION.ser)</li>
+<li>org.apache.catalina.session.PersistentManager：首先在钝化的基础上进行了扩张，前两种情况和StandardManager相同；第三种情况，可以配置主流内存的Session对象数目，将不常使用的Session对象保存到文件系统或数据库，当需要使用时再重新加载。</li>
+<li>默认情况下，Tomcat提供两个钝化驱动类：org.apache.catalina.FileStore和org.apache.catalina.JDBCStore</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Servlet规范"><a href="#3-Servlet规范" class="headerlink" title="3. Servlet规范"></a>3. Servlet规范</h2><ul>
+<li>HttpSessionBindingListener <ul>
+<li>绑定:valueBound方法    </li>
+<li>解除绑定:valueUnbound方法</li>
+</ul>
+</li>
+<li>HttpSessionActivationListener <ul>
+<li>钝化:sessionWillPassivate()    </li>
+<li>活化:sessionDidActivate()</li>
+</ul>
+</li>
+</ul>
+<p><strong>这两个监听器不需要在web.xml中注册配置</strong></p>
+<h3 id="3-1-使用Servlet3-0的前提条件"><a href="#3-1-使用Servlet3-0的前提条件" class="headerlink" title="3.1 使用Servlet3.0的前提条件"></a>3.1 使用Servlet3.0的前提条件</h3><ul>
+<li>使用Servlet3.0新标准jar包</li>
+<li>dk版本1.6以上</li>
+<li>编译器编译级别6.0</li>
+<li>在web.xml中使用3.0规范</li>
+<li>使用支持Servlet3.0特性的web容器，e.g: tomcat7以上</li>
+</ul>
+<h3 id="3-2-Servlet3-0下监听器用法"><a href="#3-2-Servlet3-0下监听器用法" class="headerlink" title="3.2 Servlet3.0下监听器用法"></a>3.2 Servlet3.0下监听器用法</h3><ul>
+<li><p>@WebListener：该注解用于将类声明为监听器，被@WebListener标注的类必须实现以下至少一个接口 </p>
+<ul>
+<li>ServletContextListener</li>
+<li>ServletContextAttributeListener</li>
+<li>HttpSessionListener</li>
+<li>HttpSessionAttributeListener</li>
+<li>ServletRequestListener</li>
+<li>ServletRequestAttributeListener</li>
+</ul>
+<p><strong>无法定义监听器的顺序；只有一个属性value(该监听器的描述信息)。</strong></p>
+</li>
+</ul>
+</div><iframe src="/donate/?AliPayQR=/img/AliPayQR.png&amp;WeChatQR=/img/WeChatQR.png&amp;GitHub=null&amp;BTCQR=null&amp;BTCKEY=null&amp;PayPal=null" style="overflow-x:hidden;overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;" frameborder="0" scrolling="no"></iframe><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="https://itracybryant.github.io/2018/04/02/Listener-Filter/" data-id="cjr7vq9ux000t5g5dpataqmp3" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3ayY4iMRAFQP7/pxmpTy0xU7yXrm4NdviEoLaoQ5KLH494Pb/W98+v6/XXR7lWzsXAwNib8bxcr4wcmTzi9TfJs2FgYJzDuCvIXr+Ca3D++jAwMDDa218f3wIwMDAw7gq4SXqXhN3klWFgYGDkRez14+ZNt1n6eFstjoGB8YGM2WDgdz7/+HwDAwPjv2c8yzU7Nx9VPkcLAwNjb0ZSUt4V2WaNvGKYioGBsSkjLxfzYcC9jChZxMDAOIAxPHnUbsuL1SKtxMDA2JqRl5R5cJxFwvbIv1AxMDCOYQw3Olwml/mv7fgTAwPjNEae8M02arSbJ/KrYWBg7M3Iy9ckgObntsXwmyMxMDAOYKyXsnm7Pw+sRTsPAwNja8ZKs34WpleOxMDAOJPRtr1Wxpwro4ViEouBgbE1o90Elgfo9sr1MRgYGAcw2nB5b1nbXvlNuw0DA2M7Rp7erY8H1gFvEkcMDIxjGPnGiHybRZ7kJfh/HomBgbEpI79x3oBrv0/Glm/uiIGBcQCjDXBtepc33eoNFhgYGAcw2jDajh6LZllZQhf/HhgYGB/OWClNf25LWTvsxMDA2JvRBrs2IOahebaNDAMD4xxGG2RX0sTkysP0EQMD4wBGviFsNuzM2bPQjIGBgdGOAWZRsQ3Kw4CLgYFxDGM2dIweKA79NwRcDAyMj2LkKd2sldZutqgHqBgYGFsz1ntZ+QByZWB5AwYDA+PzGH8Afi4PLKokKkUAAAAASUVORK5CYII=" class="article-share-link">分享</a><div class="tags"><a href="/tags/Java/">Java</a></div><div class="post-nav"><a href="/2018/04/02/Maven/" class="pre">Maven</a><a href="/2018/04/01/Reflect/" class="next">Reflect</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify, 
+  verify:verify, 
+  appId:'0r4cmQDsV2gfNxaiv2U9rm1W-gzGzoHsz',
+  appKey:'ysRkNuVQJk1H1pof4MkmBrvq',
+  placeholder:'よろしくお願いします',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://itracybryant.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">16</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/设计模式/">设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/Hibernate/">Hibernate</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/29/JVM/">JVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/Maven/">Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/Listener-Filter/">Listener & Filter</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/Reflect/">Reflect</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/Annotation/">Annotation</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/01/Servlet/">Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/JavaBean/">JavaBean</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/JSP指令与动作-JSP中Cookie的使用/">JSP指令与动作 & JSP中Cookie的使用</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://www.haomwei.com/" title="屠城" target="_blank">屠城</a><ul></ul><a href="https://luuman.github.io/Home/H1/index.html" title="世平阜康" target="_blank">世平阜康</a><ul></ul><a href="https://diygod.me/" title="DIYgod" target="_blank">DIYgod</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">Evolving.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
